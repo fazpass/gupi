@@ -1,0 +1,43 @@
+#
+#
+#
+name: 'Composite actions FE'
+description: 'build and push to artifact registry'
+
+inputs:
+  gcloud_service_key:
+    description: 'Gcloud service key'
+    required: false
+  registry:
+    description: 'Your Tailscale OAuth Client ID.'
+    required: false
+  project_id:
+    description: 'Project ID GCP'
+    required: false
+  image_name: 
+    description: 'Image Name Docker'
+    required: false
+  dockerfile:
+    description: 'Dockerfile path'
+    required: false
+    default: 'Dockerfile'
+  image_tag:
+    description: 'Tags Docker images'
+    required: false
+    default: 'latest'
+  build_args:
+    description: 'Build args to build docker images'
+    required: false
+    default: ''
+runs:
+    using: 'composite'
+    steps:
+      - uses: RafikFarhad/push-to-gcr-github-action@v4.1.0
+        with:
+          gcloud_service_key: ${{ inputs.gcloud_service_key }}
+          registry: ${{ inputs.registry }}
+          project_id: ${{ inputs.project_id }}
+          image_name: ${{ inputs.image_name }}
+          dockerfile: ${{ inputs.dockerfile }}
+          image_tag: ${{ inputs.image_tag }}
+          build_args: ${{ inputs.build_args }}
