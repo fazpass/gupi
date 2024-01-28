@@ -6,16 +6,16 @@ name: 'Composite actions Vault Get K/V'
 description: 'Get K/V from vault'
 
 inputs:
-  url:
+  vault_url:
     description: 'Url vault'
     required: true
   caCertificate:
     description: 'CA Cert vault.'
     required: false
-  username:
+  vault_username:
     description: 'Username to authenticate vault'
     required: true
-  password: 
+  vault_password: 
     description: 'Password to authenticate vault'
     required: true
 runs:
@@ -25,8 +25,8 @@ runs:
         id: import-secrets
         uses: hashicorp/vault-action@v2
         with:
-          url: ${{ secrets.VAULT_URL }} # VAULT_URL
-          caCertificate: ${{ secrets.VAULT_CA_CERT }} # VAULT_CA_CERT
+          url: ${{ inputs.vault_url }}
+          caCertificate: ${{ inputs.caCertificate }}
           method: userpass
-          username: ${{ secrets.VAULT_USERNAME }} # VAULT_USERNAME
-          password: ${{ secrets.VAULT_PASSWORD }} # VAULT_PASSWORD
+          username: ${{ inputs.vault_username }} 
+          password: ${{ inputs.vault_password }}
