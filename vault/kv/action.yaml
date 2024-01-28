@@ -18,6 +18,9 @@ inputs:
   vault_password: 
     description: 'Password to authenticate vault'
     required: true
+  secrets: 
+    description: 'Password to authenticate vault'
+    required: false
 runs:
     using: 'composite'
     steps:
@@ -30,3 +33,4 @@ runs:
           method: userpass
           username: ${{ inputs.vault_username }} 
           password: ${{ inputs.vault_password }}
+          secrets: ${{ inputs.secrets }}
