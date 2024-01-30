@@ -21,6 +21,10 @@ inputs:
     description: 'Dockerfile path'
     required: false
     default: 'Dockerfile'
+  context:
+    description: 'context'
+    required: false
+    default: 'context'
   image_tag:
     description: 'Tags Docker images'
     required: false
@@ -39,5 +43,6 @@ runs:
           project_id: ${{ inputs.project_id }}
           image_name: ${{ inputs.image_name }}
           dockerfile: ${{ inputs.dockerfile }}
+          context: ${{ inputs.context }}
           image_tag: ${{ inputs.image_tag }}
           build_args: ${{ inputs.build_args }}
