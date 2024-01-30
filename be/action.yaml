@@ -1,7 +1,7 @@
 #
 #
 #
-name: 'Composite actions FE'
+name: 'Composite actions BE'
 description: 'build and push to artifact registry'
 
 inputs:
